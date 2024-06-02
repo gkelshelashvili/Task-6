@@ -25,33 +25,33 @@ const btn_submit = document.querySelector('.submit')
 btn_submit.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const colors = ['red','blue','green','black','white']
-
     const input = document.querySelector('.myInput')
 
-    colors.map((el) => {
-        if(!input.value){
-            return alert(`Color is not defined`)
-        }
-        if(input.value !== el){
-            return alert(`${input.value} is not valid color`)
-        }
-        if(input.value == el) {
-            return body.style.backgroundColor = input.value
-        }
-    })
-    //oldway
-    // if(!input.value) {
-    //     return alert(`Please enter color`)
-    // }
-    // if(input.value !== 'red' && input.value !== 'blue' && input.value !== 'green' && input.value !== 'black' && input.value !== 'white') {
-    //     return alert(`Please enter valid color`)
-    // }
-    // if(input.value == 'red' || input.value == 'blue' || input.value == 'green' || input.value == 'black' || input.value == 'white') {
-    //     return alert(`Background color successfully changed with ${input.value}`),
-    //     body.style.backgroundColor = input.value
+    if(!input.value) {
+        return alert(`Please enter color`)
+    }
+    if(input.value !== 'red' && input.value !== 'blue' && input.value !== 'green' && input.value !== 'black' && input.value !== 'white') {
+        return alert(`Please enter valid color`)
+    }
+    if(input.value == 'red' || input.value == 'blue' || input.value == 'green' || input.value == 'black' || input.value == 'white') {
+        return alert(`Background color successfully changed with ${input.value}`),
+        body.style.backgroundColor = input.value
         
-    // }
+    }
+    
+    // ==========================    second way      ==========================
+    // const colors = ['red','blue','green','black','white']
+    // colors.map((el) => {
+    //     if(!input.value){
+    //         return alert(`Color is not defined`)
+    //     }
+    //     if(input.value !== el){
+    //         return alert(`${input.value} is not valid color`)
+    //     }
+    //     if(input.value == el) {
+    //         return body.style.backgroundColor = input.value
+    //     }
+    // })
 })
 
 
@@ -59,16 +59,16 @@ btn_submit.addEventListener('click', (e) => {
 const btn_calculate = document.querySelector('.calculate')
 
 btn_calculate.addEventListener('click', (e) => {
+    e.preventDefault()
 
-    let input = document.querySelector('.numbers_input').value;
-        let numbers = input.split(":");
-        let sum = 0;
+    const input = document.querySelector('.numbers_input').value.split(":")
+    let sum = 0;
 
-        for (let i = 0; i < numbers.length; i++) {
-            sum += parseFloat(numbers[i]);
-        }
+    for (let i = 0; i < input.length; i++) {
+        sum += parseFloat(input[i]);
+    }
 
-        let average = sum / numbers.length;
+    const average = Math.floor(sum / input.length)
 
-        alert(average)
+    return alert(average ,'this is the average of the numbers')
 })
