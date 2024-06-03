@@ -25,33 +25,20 @@ const btn_submit = document.querySelector('.submit')
 btn_submit.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const input = document.querySelector('.myInput')
+    const input_value = document.querySelector('.myInput').value
 
-    if(!input.value) {
-        return alert(`Please enter color`)
+    const colors = ['red','blue','green','black','white']
+
+    if(colors.includes(input_value)){
+        return alert(`Background color successfully changed with ${input_value}`),
+        body.style.backgroundColor = input_value
     }
-    if(input.value !== 'red' && input.value !== 'blue' && input.value !== 'green' && input.value !== 'black' && input.value !== 'white') {
-        return alert(`Please enter valid color`)
+    if(!input_value){
+        return alert("Enter color")
     }
-    if(input.value == 'red' || input.value == 'blue' || input.value == 'green' || input.value == 'black' || input.value == 'white') {
-        return alert(`Background color successfully changed with ${input.value}`),
-        body.style.backgroundColor = input.value
-        
+    if(!colors.includes(input_value)){
+        return alert("Color is not available")
     }
-    
-    // ==========================    second way      ==========================
-    // const colors = ['red','blue','green','black','white']
-    // colors.map((el) => {
-    //     if(!input.value){
-    //         return alert(`Color is not defined`)
-    //     }
-    //     if(input.value !== el){
-    //         return alert(`${input.value} is not valid color`)
-    //     }
-    //     if(input.value == el) {
-    //         return body.style.backgroundColor = input.value
-    //     }
-    // })
 })
 
 
